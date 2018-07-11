@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata modelVersion="1.1.0">
+  <groupId>org.reap</groupId>
+  <artifactId>spring-boot-starter-data-mybatis</artifactId>
+  <version>1.0.0.SNAPSHOT</version>
+  <versioning>
+    <snapshot>
+      <timestamp>20180630.072454</timestamp>
+      <buildNumber>2</buildNumber>
+    </snapshot>
+    <lastUpdated>20180630072454</lastUpdated>
+    <snapshotVersions>
+      <snapshotVersion>
+        <extension>jar</extension>
+        <value>1.0.0.20180630.072454-2</value>
+        <updated>20180630072454</updated>
+      </snapshotVersion>
+      <snapshotVersion>
+        <extension>pom</extension>
+        <value>1.0.0.20180630.072454-2</value>
+        <updated>20180630072454</updated>
+      </snapshotVersion>
+    </snapshotVersions>
+  </versioning>
+</metadata>
