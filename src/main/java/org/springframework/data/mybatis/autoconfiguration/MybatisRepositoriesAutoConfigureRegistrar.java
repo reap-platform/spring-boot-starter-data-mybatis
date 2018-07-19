@@ -125,37 +125,56 @@ class MybatisRepositoriesAutoConfigureRegistrar extends AbstractRepositoryConfig
 
 			@Override
 			public TableGeneratorConfig getTableGeneratorConfig() {
-				if (null == properties.getTableGenerator()) {
-					return super.getTableGeneratorConfig();
-				} else {
-					TableGeneratorConfig defaultConfig = super.getTableGeneratorConfig();
-					TableGeneratorConfig config = super.getTableGeneratorConfig();
-					if (null != config.getAllocationSize()) {
-						defaultConfig.setAllocationSize(config.getAllocationSize());
-					}
-					if (null != config.getTable()) {
-						defaultConfig.setTable(config.getTable());
-					}
-					if (null != config.getSchema()) {
-						defaultConfig.setSchema(config.getSchema());
-					}
-					if (null != config.getCatalog()) {
-						defaultConfig.setCatalog(config.getCatalog());
-					}
-					if (null != config.getPkColumnName()) {
-						defaultConfig.setPkColumnName(config.getPkColumnName());
-					}
-					if (null != config.getValueColumnName()) {
-						defaultConfig.setValueColumnName(config.getValueColumnName());
-					}
-					if (null != config.getPkColumnValue()) {
-						defaultConfig.setPkColumnValue(config.getPkColumnValue());
-					}
-					if (null != config.getInitialValue()) {
-						defaultConfig.setInitialValue(config.getInitialValue());
-					}
-					return defaultConfig;
+				TableGeneratorConfig defaultConfig = super.getTableGeneratorConfig();
+
+				Integer allocationSize = environment
+						.getProperty(MybatisProperties.PREFIX + ".table-generator.allocation-size", Integer.class);
+
+				if (null != allocationSize) {
+					defaultConfig.setAllocationSize(allocationSize);
 				}
+				String table = environment.getProperty(MybatisProperties.PREFIX + ".table-generator.table",
+						String.class);
+
+				if (null != table) {
+					defaultConfig.setTable(table);
+				}
+
+				String schema = environment.getProperty(MybatisProperties.PREFIX + ".table-generator.schema",
+						String.class);
+
+				if (null != schema) {
+					defaultConfig.setSchema(schema);
+				}
+
+				String catalog = environment.getProperty(MybatisProperties.PREFIX + ".table-generator.catalog",
+						String.class);
+
+				if (null != catalog) {
+					defaultConfig.setCatalog(catalog);
+				}
+
+				String pkColumnName = environment
+						.getProperty(MybatisProperties.PREFIX + ".table-generator.pk-column-name", String.class);
+
+				if (null != pkColumnName) {
+					defaultConfig.setPkColumnName(pkColumnName);
+				}
+
+				String valueColumnName = environment
+						.getProperty(MybatisProperties.PREFIX + ".table-generator.value-column-name", String.class);
+
+				if (null != valueColumnName) {
+					defaultConfig.setValueColumnName(valueColumnName);
+				}
+
+				Integer initialValue = environment
+						.getProperty(MybatisProperties.PREFIX + ".table-generator.initial-value", Integer.class);
+
+				if (null != initialValue) {
+					defaultConfig.setInitialValue(initialValue);
+				}
+				return defaultConfig;
 			}
 
 		};
