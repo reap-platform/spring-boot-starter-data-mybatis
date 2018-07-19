@@ -124,12 +124,12 @@ class MybatisRepositoriesAutoConfigureRegistrar extends AbstractRepositoryConfig
 			}
 
 			@Override
-			public TableGeneratorConfig getDefaultTableGeneratorConfig() {
+			public TableGeneratorConfig getTableGeneratorConfig() {
 				if (null == properties.getTableGenerator()) {
-					return super.getDefaultTableGeneratorConfig();
+					return super.getTableGeneratorConfig();
 				} else {
-					TableGeneratorConfig defaultConfig = super.getDefaultTableGeneratorConfig();
-					TableGeneratorConfig config = super.getDefaultTableGeneratorConfig();
+					TableGeneratorConfig defaultConfig = super.getTableGeneratorConfig();
+					TableGeneratorConfig config = super.getTableGeneratorConfig();
 					if (null != config.getAllocationSize()) {
 						defaultConfig.setAllocationSize(config.getAllocationSize());
 					}
