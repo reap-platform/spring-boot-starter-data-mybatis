@@ -99,12 +99,8 @@ class MybatisRepositoriesAutoConfigureRegistrar extends AbstractRepositoryConfig
 
 	@Override
 	public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry) {
-		if (null == properties.getMapperLocations() || properties.getMapperLocations().length == 0) {
-			super.registerBeanDefinitions(importingClassMetadata, registry);
-		} else {
-			new RepositoryConfigurationDelegate(getConfigurationSource(registry), this.resourceLoader, this.environment)
-					.registerRepositoriesIn(registry, getRepositoryConfigurationExtension());
-		}
+		new RepositoryConfigurationDelegate(getConfigurationSource(registry), this.resourceLoader, this.environment)
+				.registerRepositoriesIn(registry, getRepositoryConfigurationExtension());
 	}
 
 	private AnnotationRepositoryConfigurationSource getConfigurationSource(BeanDefinitionRegistry registry) {
