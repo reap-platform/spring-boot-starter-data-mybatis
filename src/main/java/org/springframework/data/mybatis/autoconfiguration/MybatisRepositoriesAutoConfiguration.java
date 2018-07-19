@@ -61,6 +61,7 @@ public class MybatisRepositoriesAutoConfiguration implements ResourceLoaderAware
 
 	@Autowired
 	private MybatisProperties properties;
+	
 	private ResourceLoader resourceLoader;
 
 	@Bean
@@ -83,18 +84,8 @@ public class MybatisRepositoriesAutoConfiguration implements ResourceLoaderAware
 			}
 		}
 
-		String handlers = "ir.boot.autoconfigure.data.mybatis.handlers";
-		if (null != properties.getHandlerPackages() && properties.getHandlerPackages().length > 0) {
-			for (String s : properties.getHandlerPackages()) {
-				if (StringUtils.isEmpty(s)) {
-					continue;
-				}
-				handlers += "," + s;
-			}
 
-		}
-
-		factoryBean.setTypeHandlersPackage(handlers);
+		factoryBean.setTypeHandlersPackage(StringUtils.arrayToCommaDelimitedString(properties.getHandlerPackages()));
 
 		org.apache.ibatis.session.Configuration configuration = factoryBean.getObject().getConfiguration();
 		configuration.setMapUnderscoreToCamelCase(true);

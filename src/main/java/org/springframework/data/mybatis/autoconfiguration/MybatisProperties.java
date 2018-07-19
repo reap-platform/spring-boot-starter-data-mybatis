@@ -19,6 +19,7 @@
 package org.springframework.data.mybatis.autoconfiguration;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.data.mybatis.id.support.TableGeneratorConfig;
 
 /**
  * @author Jarvis Song
@@ -35,7 +36,11 @@ public class MybatisProperties {
     private String[] handlerPackages;
 
     private String[] repositoriesBasePackagesFile;
+    
     private String[] repositoriesBasePackages;
+    
+    private TableGeneratorConfig tableGenerator; 
+    
 
     public Class<?> getDefaultScriptingLanguage() {
         return defaultScriptingLanguage;
@@ -84,4 +89,13 @@ public class MybatisProperties {
     public void setHandlerPackages(String[] handlerPackages) {
         this.handlerPackages = handlerPackages;
     }
+
+	public TableGeneratorConfig getTableGenerator() {
+		return tableGenerator;
+	}
+
+	public void setTableGenerator(TableGeneratorConfig tableGenerator) {
+		this.tableGenerator = tableGenerator;
+	}
+    
 }
